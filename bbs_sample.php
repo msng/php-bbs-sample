@@ -10,6 +10,8 @@ $log_dir = __DIR__ . '/data';
 $log_filename = 'log.json';
 $log_path = $log_dir . '/' . $log_filename;
 
+$title_for_page = '何かすごい掲示板';
+
 //ログファイルが存在すれば読み込む
 if (file_exists($log_path)) {
     $messages = json_decode(file_get_contents($log_path), true);
@@ -32,11 +34,11 @@ $messages = array_reverse($messages);
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>何かすごい掲示板</title>
+        <title><?php echo $title_for_page; ?></title>
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <h1>何かすごい掲示板</h1>
+        <h1><?php echo $title_for_page; ?></h1>
         <form method="post" action="">
             <input type="text" name="message">
             <input type="submit" value="投稿">
